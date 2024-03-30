@@ -16,9 +16,7 @@ const customerPage = async (req, res) => {
 
 const createCustomerPage = async (req, res) => {
   try {
-    res.render("customers/create.ejs", {
-      customers,
-    });
+    res.render("customers/create.ejs");
   } catch (err) {
     res.render("customers/create.ejs", {
       message: err.message,
@@ -29,7 +27,8 @@ const createCustomerPage = async (req, res) => {
 const createCustomer = async (req, res) => {
   try {
     await Customer.create(req.body);
-    res.redirect("/Customers");
+    req.flash("message", "Ditambah");
+    res.redirect("/customers");
   } catch (err) {
     console.log(err.message);
   }
@@ -37,7 +36,7 @@ const createCustomer = async (req, res) => {
 
 const editCustomerPage = async (req, res) => {
   try {
-    const customer = await Customer.findByAll;
+    const customer = await Customer.findByPk(req.params.id);
     res.render("customers/edit.ejs", {
       customers,
     });
@@ -61,23 +60,26 @@ const editCustomer = async (req, res) => {
   }
 };
 
-const editCustomer = async (req, res) => {
+const deleteCustomer = async (req, res) => {
   try {
-    await Customer.findByAllAndUpdate;
-    res.render("customers/edit.ejs", {
-      customers,
+    await Customer.destroy({
+      where: {
+        id: req.params.id,
+      },
     });
+
+    res.redirect("/customers");
   } catch (err) {
     res.render("error.ejs", {
       message: err.message,
     });
   }
 };
-
 module.exports = {
   customerPage,
   createCustomerPage,
   createCustomer,
+  editCustomerPage,
   editCustomer,
-  deleteCustomer
+  deleteCustomer,
 };
