@@ -18,7 +18,7 @@ app.set("view engine", "ejs");
 
 app.use(
   session({
-    secret: "apaaja",
+    secret: "apa saja",
     saveUninitialized: true,
     resave: true,
   })

@@ -1,9 +1,7 @@
 const router = require("express").Router();
 
-const Customer = require("./customerRouter");
-const CustomerAdmin = require("./customerAdminRouter");
+const Car = require("./carRouter");
 
-router.use("/api/v1/customers", Customer);
-router.use("/customers", CustomerAdmin);
+router.use("/cars", Car);
 
 module.exports = router;
