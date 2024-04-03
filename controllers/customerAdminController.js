@@ -18,7 +18,7 @@ const createCustomerPage = async (req, res) => {
   try {
     res.render("customers/create.ejs");
   } catch (err) {
-    res.render("customers/create.ejs", {
+    res.render("error.ejs", {
       message: err.message,
     });
   }
@@ -38,7 +38,7 @@ const editCustomerPage = async (req, res) => {
   try {
     const customer = await Customer.findByPk(req.params.id);
     res.render("customers/edit.ejs", {
-      customers,
+      customer,
     });
   } catch (err) {
     res.render("error.ejs", {
@@ -49,10 +49,12 @@ const editCustomerPage = async (req, res) => {
 
 const editCustomer = async (req, res) => {
   try {
-    await Customer.findByAllAndUpdate;
-    res.render("customers/edit.ejs", {
-      customers,
+    await Customer.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
     });
+    res.redirect("/customers");
   } catch (err) {
     res.render("error.ejs", {
       message: err.message,
@@ -75,6 +77,7 @@ const deleteCustomer = async (req, res) => {
     });
   }
 };
+
 module.exports = {
   customerPage,
   createCustomerPage,

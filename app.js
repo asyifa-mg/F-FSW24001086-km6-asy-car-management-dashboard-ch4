@@ -1,4 +1,3 @@
-//console.log("Hello world");
 require("dotenv").config();
 
 const express = require("express");
@@ -7,14 +6,12 @@ const flash = require("connect-flash");
 const session = require("express-session");
 
 const router = require("./routes");
-const PORT = process.env.PORT || "3000";
+
+const PORT = process.env.PORT || "8000";
 
 const app = express();
-
-//middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-//akhir middleware
 
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
@@ -31,10 +28,9 @@ app.use(
 app.use(express.static(`${__dirname}/public`));
 
 app.use(flash());
-
 app.use(morgan("dev"));
 app.use(router);
 
 app.listen(PORT, () => {
-  console.log(`SERVER JALAN DI PORT: ${PORT}`);
+  console.log(`SERVER JALAN DI PORT : ${PORT}`);
 });
