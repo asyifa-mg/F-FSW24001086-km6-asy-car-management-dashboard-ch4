@@ -17,26 +17,6 @@ body {
   overflow-x: hidden; /* Menghilangkan scroll vertikal */
 }
 
-/* Custom scrollbar */
-body {
-  scrollbar-width: thin;
-  scrollbar-color: #888888 #f0f0f0; /* Track color, thumb color */
-}
-
-body::-webkit-scrollbar {
-  width: 12px; /* Width of the entire scrollbar */
-}
-
-body::-webkit-scrollbar-track {
-  background: #f0f0f0; /* Color of the tracking area */
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: #888888; /* Color of the scroll thumb */
-  border-radius: 6px; /* Roundness of the scroll thumb */
-  border: 3px solid #f0f0f0; /* Creates padding around scroll thumb */
-}
-
 /* Container */
 .container {
   max-width: 100%;
@@ -80,7 +60,7 @@ body::-webkit-scrollbar-thumb {
   background: white;
   border-radius: 2px;
   box-shadow: 2px 2px 10 px;
-  height: 902px;
+  height: 850px;
   display: initial;
   cursor: pointer;
 }
@@ -120,7 +100,6 @@ ul {
   display: list-item;
   text-decoration: none;
 }
-
 /* [END] container */
 
 /* Main */
@@ -164,38 +143,74 @@ ul {
 }
 @media (max-width: 360px) {
 }
-
-.listcar {
+/* list car */
+.carlist {
   display: flex;
-  align-items: center;
-  overflow: initial;
-  margin-top: 100px;
+  flex-wrap: wrap; /* Memungkinkan baris berikutnya jika konten tidak muat dalam satu baris */
+  justify-content: center; /* Mengatur agar card berada di tengah */
   margin-left: 150px;
   padding: 5px;
 }
 
-.card {
-  margin-bottom: 20px;
-  margin-right: 10px; /* Atur jarak antara setiap card di sini */
+.card-spacing {
   background: white;
-  background-position: 0%;
-  align-items: center;
-  position: sticky;
-  width: 100%; /* Menyesuaikan lebar card dengan lebar parentnya */
+  width: calc(
+    100%
+  ); /* Atur lebar setiap card, disesuaikan dengan jumlah card dalam satu baris */
   max-width: 300px;
+  margin-right: 10px; /* Atur jarak antara setiap card */
+  height: 100%;
+  margin-left: 100px;
+  margin-bottom: 100px;
 }
 
-/* BAGIAN ISI */
+.card-body {
+  padding: 5px;
+  margin-left: 20px;
+}
+
+.listcar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+
+/* Button add new car */
 .btn-add {
-  margin-top: 150px;
-  margin-right: 5px;
-  margin-left: 0px;
+  margin-top: 50px;
+  margin-right: 0;
+  margin-left: 900px;
+  padding-left: 300px;
+  padding-right: 0;
 }
 
-.custom-btn {
+.btn-add .btn {
+  position: relative;
+  padding-left: 10px;
+  background-color: #0d28a6;
+  border-radius: 1px;
+}
+
+.btn-add .btn:hover {
   background-color: #0d28a6;
 }
 
-.fas .fa-trash:hover {
-  background-color: #5cb85f;
+.btn-add .btn:hover .fas {
+  color: white;
+}
+/* akhir Button add new car */
+
+/* BAGIAN CREATE */
+
+.sewa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+}
+
+.sewa .card {
+  width: 300%;
 }

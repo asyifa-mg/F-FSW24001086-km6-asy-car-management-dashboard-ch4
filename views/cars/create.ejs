@@ -14,26 +14,29 @@
       src="https://kit.fontawesome.com/c70c22ecf3.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="/css/style.css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
+
   <body>
     <!-- Sidebar -->
     <div class="container">
       <div class="sidebar">
         <div class="user">
-          <img src="./images/user1.svg" alt="" />
+          <img src="../images/user1.svg" alt="" />
         </div>
         <div class="menu">
           <ul>
             <li class="active">
               <a href="#">
-                <img src="./images/fi_home.svg" alt="" />
+                <img src="../images/fi_home.svg" alt="" />
                 <span class="text">Dashboard</span>
               </a>
             </li>
             <li class="list">
               <a>
-                <img src="./images/truck.svg" alt="" />
+                <img src="../images/truck.svg" alt="" />
                 <span class="text">Cars</span>
               </a>
               <ul>
@@ -50,7 +53,7 @@
         <div id="header">
           <nav class="navbar navbar-expand px-3 border-bottom">
             <div>
-              <img src="./images/Rectangle 62.svg" alt="" />
+              <img src="../images/Rectangle 62.svg" alt="" />
             </div>
             <button class="btn">
               <span class="navbar-toggler-icon"></span>
@@ -84,7 +87,7 @@
                   aria-expanded="true"
                 >
                   <img
-                    src="./images/Group 15.svg"
+                    src="../images/Group 15.svg"
                     alt=""
                     class="rounded-circle"
                   />
@@ -104,81 +107,121 @@
             </div>
           </nav>
         </div>
-      </div>
-      <!-- Akhir header -->
-      <div class="card">
-        <div class="card-body">
-          <form action="/cars/admin/create" method="POST">
-            <div class="mb-3">
-              <label for="name" class="form-label">Nama:</label>
-              <input
-                type="text"
-                class="form-control"
-                id="name"
-                name="name"
-                placeholder="Avanza"
-                required
-              />
-            </div>
+        <!-- Akhir header -->
+        <!-- Card -->
+        <div class="sewa">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <form action="/cars/admin/create" method="POST">
+                    <div class="row mt-2 mb-0">
+                      <label for="name" class="col-sm-4 col-form-label my-auto"
+                        >Nama:</label
+                      >
+                      <div class="col-sm-7 my-auto">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="name"
+                          name="name"
+                          placeholder="Avanza"
+                          required
+                        />
+                      </div>
+                    </div>
 
-            <div class="mb-3">
-              <label for="price" class="form-label">Sewa Per Hari:</label>
-              <input
-                type="text"
-                class="form-control"
-                id="price"
-                name="price"
-                placeholder="Rp 0,-"
-                required
-              />
-            </div>
+                    <div class="row mt-2 mb-2">
+                      <label for="price" class="col-sm-4 col-form-label my-auto"
+                        >Sewa Per Hari:</label
+                      >
+                      <div class="col-sm-7 my-auto">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="price"
+                          name="price"
+                          placeholder="Rp 0,-"
+                          required
+                        />
+                      </div>
+                    </div>
 
-            <div class="mb-3">
-              <label for="ukuran" class="form-label">Ukuran:</label>
-              <select class="form-select" id="ukuran" name="ukuran" required>
-                <option value="">Pilih Ukuran</option>
-                <option value="Small">Small</option>
-                <option value="Medium">Medium</option>
-                <option value="Large">Large</option>
-              </select>
-            </div>
+                    <div class="row mt-2 mb-2">
+                      <label
+                        for="ukuran"
+                        class="col-sm-4 col-form-label my-auto"
+                        >Ukuran:</label
+                      >
+                      <div class="col-sm-7 my-auto">
+                        <select
+                          class="form-select"
+                          id="ukuran"
+                          name="ukuran"
+                          required
+                        >
+                          <label for="ukuran">Small</label>
+                          <option value="Small">Small</option>
+                          <option value="Medium">Medium</option>
+                          <option value="Large">Large</option>
+                        </select>
+                      </div>
+                    </div>
 
-            <div class="mb-3">
-              <label for="photo" class="form-label">Foto:</label>
-              <input
-                type="text"
-                class="form-control"
-                id="photo"
-                name="photo"
-                placeholder="http://placeimg.com/640/480/any"
-                required
-              />
+                    <div class="row mt-2 mb-2">
+                      <label for="photo" class="col-sm-4 col-form-label"
+                        >Foto:</label
+                      >
+                      <div class="col-sm-7 my-auto">
+                        <div class="input-group">
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="photo"
+                            name="photo"
+                            style="display: none"
+                            onchange="document.getElementById('photoPath').value = this.value;"
+                            required
+                          />
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="photoPath"
+                            placeholder="http://placeimg.com/640/480/any"
+                            readonly
+                            aria-describedby="inputGroupFileAddon01"
+                          />
+                          <button
+                            class="btn btn-secondary"
+                            type="button"
+                            onclick="document.getElementById('photo').click();"
+                          >
+                            <i class="fas fa-upload"></i>
+                          </button>
+                        </div>
+                        <br />
+                        <p>File size max. 2MB</p>
+                      </div>
+                    </div>
+                    <div class="row mb-auto">
+                      <div class="col-sm-6 offset-sm-6">
+                        <button type="submit" class="btn btn-primary">
+                          SAVE
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
-
-            <div class="mb-3">
-              <label for="photoFile" class="form-label">Upload Foto:</label>
-              <input
-                type="file"
-                class="form-control"
-                id="photoFile"
-                name="photoFile"
-              />
-            </div>
-
-            <button type="submit" class="btn btn-primary">SAVE</button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
-    <!-- Akhir list car -->
+    <!-- Script -->
     <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
   </body>
